@@ -16,11 +16,10 @@ class SPTAKIGame(BasicGame, mobase.IPluginFileMapper):
 
     Name = "SPT AKI Plugin"
     Author = "Archon"
-    Version = "1.0.0a"
+    Version = "1.0.1a"
     GameName = "SPT AKI"
     GameShortName = "sptaki"
-    GameBinary = "EscapeFromTarkov.exe"
-    GameLauncher = "sptBridge.exe"
+    GameBinary = "aki.launcher.exe"
     GameDataPath = "%GAME_PATH%"
     GameSaveExtension = "json"
     GameSavesDirectory = "%GAME_PATH%/user/profiles"
@@ -32,6 +31,7 @@ class SPTAKIGame(BasicGame, mobase.IPluginFileMapper):
 
     def executables(self) -> List[mobase.ExecutableInfo]:
         execs = super().executables()
+        print(execs)
 
         """
         A bat script file to bridge the environment to server and launcher.
@@ -67,7 +67,8 @@ endlocal
         execs.append(
             mobase.ExecutableInfo("Launch SP Tarkov", QFileInfo(workaroundPath))
         )
-
+        execs.pop(0)
+        print(execs)
         return execs
 
 
