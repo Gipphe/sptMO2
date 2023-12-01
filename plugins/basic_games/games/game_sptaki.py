@@ -4,11 +4,12 @@ import mobase
 from ..basic_game import BasicGame
 from ..basic_features import BasicModDataChecker, GlobPatterns
 
+
 class SPTAKIGame(BasicGame, mobase.IPluginFileMapper):
 
     Name = "SPT AKI Plugin"
     Author = "Archon"
-    Version = "1.1"
+    Version = "1.0.1a"
     GameName = "SPT AKI"
     GameShortName = "sptaki"
     GameBinary = "aki.launcher.exe"
@@ -65,6 +66,8 @@ endlocal
         execs.pop(0)
         return execs
 
+    def mappings(self) -> list[mobase.Mapping]:
+        return []
 
 class SPTAKIModDataChecker(BasicModDataChecker):
     def __init__(self, patterns: GlobPatterns = GlobPatterns()):
