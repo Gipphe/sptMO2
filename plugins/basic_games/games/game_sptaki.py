@@ -9,7 +9,7 @@ class SPTAKIGame(BasicGame, mobase.IPluginFileMapper):
 
     Name = "SPT AKI Plugin"
     Author = "Archon"
-    Version = "1.0.1a"
+    Version = "1.1.1"
     GameName = "SPT AKI"
     GameShortName = "sptaki"
     GameBinary = "aki.launcher.exe"
