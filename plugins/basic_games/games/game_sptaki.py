@@ -12,7 +12,7 @@ class SPTAKIGame(BasicGame, mobase.IPluginFileMapper):
     Version = "1.1.1"
     GameName = "SPT AKI"
     GameShortName = "sptaki"
-    GameBinary = "aki.launcher.exe"
+    GameBinary = "Aki.Launcher.exe"
     GameDataPath = "%GAME_PATH%"
     GameSaveExtension = "json"
     GameSavesDirectory = "%GAME_PATH%/user/profiles"
@@ -43,8 +43,8 @@ class SPTAKIGame(BasicGame, mobase.IPluginFileMapper):
 @echo off
 setlocal
 
-set "launcher_path=aki.launcher.exe"
-set "server_path=aki.server.exe"
+set "launcher_path=Aki.Launcher.exe"
+set "server_path=Aki.Server.exe"
 
 REM Launch the server.exe
 start "" "%server_path%"
