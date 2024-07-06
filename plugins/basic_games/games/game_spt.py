@@ -5,7 +5,7 @@ from ..basic_game import BasicGame
 from ..basic_features import BasicModDataChecker, GlobPatterns
 
 
-class SPTAKIGame(BasicGame, mobase.IPluginFileMapper):
+class SPTGame(BasicGame, mobase.IPluginFileMapper):
 
     Name = "SPT Plugin"
     Author = "Archon"
@@ -23,7 +23,7 @@ class SPTAKIGame(BasicGame, mobase.IPluginFileMapper):
 
     def init(self, organizer: mobase.IOrganizer) -> bool:
         super().init(organizer)
-        self._featureMap[mobase.ModDataChecker] = SPTAKIModDataChecker()
+        self._featureMap[mobase.ModDataChecker] = SPTModDataChecker()
         return True
 
     def executables(self) -> List[mobase.ExecutableInfo]:
@@ -69,7 +69,7 @@ endlocal
     def mappings(self) -> list[mobase.Mapping]:
         return []
 
-class SPTAKIModDataChecker(BasicModDataChecker):
+class SPTModDataChecker(BasicModDataChecker):
     def __init__(self, patterns: GlobPatterns = GlobPatterns()):
         super().__init__(
             GlobPatterns(
