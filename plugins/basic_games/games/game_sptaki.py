@@ -7,12 +7,12 @@ from ..basic_features import BasicModDataChecker, GlobPatterns
 
 class SPTAKIGame(BasicGame, mobase.IPluginFileMapper):
 
-    Name = "SPT AKI Plugin"
+    Name = "SPT Plugin"
     Author = "Archon"
-    Version = "1.1.1"
-    GameName = "SPT AKI"
-    GameShortName = "sptaki"
-    GameBinary = "Aki.Launcher.exe"
+    Version = "1.1.2"
+    GameName = "SPT"
+    GameShortName = "spt"
+    GameBinary = "SPT.Launcher.exe"
     GameDataPath = "%GAME_PATH%"
     GameSaveExtension = "json"
     GameSavesDirectory = "%GAME_PATH%/user/profiles"
@@ -43,8 +43,8 @@ class SPTAKIGame(BasicGame, mobase.IPluginFileMapper):
 @echo off
 setlocal
 
-set "launcher_path=Aki.Launcher.exe"
-set "server_path=Aki.Server.exe"
+set "launcher_path=SPT.Launcher.exe"
+set "server_path=SPT.Server.exe"
 
 REM Launch the server.exe
 start "" "%server_path%"
