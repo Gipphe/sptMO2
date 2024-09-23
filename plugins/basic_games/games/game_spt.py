@@ -23,7 +23,10 @@ class SPTGame(BasicGame, mobase.IPluginFileMapper):
 
     def init(self, organizer: mobase.IOrganizer) -> bool:
         super().init(organizer)
-        self._featureMap[mobase.ModDataChecker] = SPTModDataChecker()
+        if hasattr(self, '_featureMap'):
+            self._featureMap[mobase.ModDataChecker] = SPTModDataChecker()
+        else:
+            self._register_feature(SPTModDataChecker())
         return True
 
     def executables(self) -> List[mobase.ExecutableInfo]:
