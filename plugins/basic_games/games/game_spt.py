@@ -38,7 +38,8 @@ class SPTGame(BasicGame, mobase.IPluginFileMapper):
 
         execs.append(
             mobase.ExecutableInfo("Launch SP Tarkov", QFileInfo(workaroundPath))
-        ).append(
+        )
+        execs.append(
             mobase.ExecutableInfo(
                 "Launch SPT Tarkov (Linux)", QFileInfo(linux_workaround_path)
             )
