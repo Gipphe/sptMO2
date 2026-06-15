@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import List
 
 import mobase
 from PyQt6.QtCore import QFileInfo
@@ -31,27 +31,22 @@ class SPTGame(BasicGame, mobase.IPluginFileMapper):
         return True
 
     def executables(self) -> List[mobase.ExecutableInfo]:
-        execs = super().executables()
-
-        workaroundPath = self.windows_workaround()
-        linux_workaround_path = self.linux_workaround()
-
-        execs.append(
-            mobase.ExecutableInfo("Launch SP Tarkov", QFileInfo(workaroundPath))
-        )
-        execs.append(
+        gamedir = self.gameDirectory()
+        return [
             mobase.ExecutableInfo(
-                "Launch SPT Tarkov (Linux)", QFileInfo(linux_workaround_path)
-            )
-        )
-        execs.pop(0)
-        return execs
+                "Launch SP Tarkov", QFileInfo(gamedir, self.windows_workaround())
+            ),
+            mobase.ExecutableInfo(
+                "Launch SPT Tarkov (Linux)", QFileInfo(gamedir, self.linux_workaround())
+            ),
+        ]
 
     def windows_workaround(self) -> str:
         """
         A bat script file to bridge the environment to server and launcher.
         """
-        workaroundPath = self._gamePath + "/sptvfsbridge.bat"
+        filePath = "sptvfsbridge.bat"
+        workaroundPath = self._gamePath + "/" + filePath
 
         try:
             workaround = open(workaroundPath, "rt")
@@ -78,10 +73,11 @@ endlocal
 """
                 )
         workaround.close()
-        return workaroundPath
+        return filePath
 
     def linux_workaround(self) -> str:
-        workaroundPath = self._gamePath + "/sptvfsbridge.sh"
+        filePath = "sptvfsbridge.sh"
+        workaroundPath = self._gamePath + "/" + filePath
 
         try:
             workaround = open(workaroundPath, "rt")
@@ -97,6 +93,8 @@ sleep 5s
 nohup umu-launcher "$launcher_path" &
                     """
                 )
+        workaround.close()
+        return filePath
 
     def mappings(self) -> list[mobase.Mapping]:
         return []
