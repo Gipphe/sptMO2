@@ -11,7 +11,7 @@ class SPTGame(BasicGame, mobase.IPluginFileMapper):
     Name = "SPT Plugin"
     Author = "Archon"
     Version = "2.0.0"
-    GameName = "SPT"
+    GameName = "SPTarkov"
     GameShortName = "spt"
     GameBinary = "SPT.Launcher.exe"
     GameDataPath = "%GAME_PATH%"
