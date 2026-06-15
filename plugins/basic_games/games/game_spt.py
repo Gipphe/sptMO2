@@ -32,13 +32,15 @@ class SPTGame(BasicGame, mobase.IPluginFileMapper):
 
     def executables(self) -> List[mobase.ExecutableInfo]:
         gamedir = self.gameDirectory()
+        exes = [
+            ["Launch SP Tarkov", self.windows_workaround()],
+            ["Launch SP Tarkov (Linux)", self.linux_workaround()],
+            ["Launch SP Tarkov Client", "SPT.Launcher.exe"],
+            ["Launch SP Tarkov Server", "SPT/SPT.Server.exe"],
+            ["Launch SP Tarkov Server (Linux)", "SPT/SPT.Server.Linux"],
+        ]
         return [
-            mobase.ExecutableInfo(
-                "Launch SP Tarkov", QFileInfo(gamedir, self.windows_workaround())
-            ),
-            mobase.ExecutableInfo(
-                "Launch SPT Tarkov (Linux)", QFileInfo(gamedir, self.linux_workaround())
-            ),
+            mobase.ExecutableInfo(exe[0], QFileInfo(gamedir, exe[1])) for exe in exes
         ]
 
     def windows_workaround(self) -> str:
